@@ -86,4 +86,34 @@ Typography also plays a crucial role. In a minimal design, your text is often on
 
 Finally, color should be used deliberately. A minimal color palette, often with just one or two accent colors, can create a strong visual identity without overwhelming the user. The colors in this blog, with its soft blue primary and clean grays, are an example of this principle in action.`,
   },
+  {
+    slug: 'state-management-in-react',
+    title: 'A Guide to State Management in React',
+    description:
+      'Managing state can be complex. This guide covers different state management strategies in React, from built-in hooks like useState and useReducer to libraries like Zustand.',
+    author: 'Michael Brown',
+    date: 'February 14, 2024',
+    coverImage: findImage('blog-post-5').url,
+    coverImageHint: findImage('blog-post-5').hint,
+    content: `As your React application grows, managing state becomes increasingly important. Simple prop drilling can quickly become cumbersome and lead to unmaintainable code.
+
+For local component state, the 'useState' hook is often sufficient. It's simple, effective, and built right into React. When state logic becomes more complex, 'useReducer' provides a more structured approach, inspired by Redux.
+
+For global state that needs to be shared across many components, you have several options. The built-in Context API is a great choice for low-frequency updates, like theming or user authentication. For more complex, high-frequency state changes, libraries like Zustand or Redux Toolkit offer more powerful tools and better performance, helping you build scalable and robust applications.`,
+  },
+  {
+    slug: 'building-accessible-web-apps',
+    title: 'Building Accessible Web Apps with Shadcn UI',
+    description:
+      'Accessibility is not a feature, it\'s a requirement. Learn how to build inclusive web applications using the accessible components provided by Shadcn UI and best practices.',
+    author: 'Sarah Green',
+    date: 'March 08, 2024',
+    coverImage: findImage('blog-post-6').url,
+    coverImageHint: findImage('blog-post-6').hint,
+    content: `Building for the web means building for everyone. Web accessibility (a11y) ensures that people with disabilities can use and interact with your applications.
+
+Using a component library like Shadcn UI is a great start. Its components are built on top of Radix UI, which provides unstyled, accessible primitives. This means that components like Dialogs, Dropdown Menus, and Forms are built with accessibility in mind from the ground up, handling things like keyboard navigation and ARIA attributes for you.
+
+However, using accessible components isn't enough. You also need to follow best practices, such as providing alternative text for images, using semantic HTML elements (like '<nav>', '<main>', and '<button>'), and ensuring sufficient color contrast. By combining a solid component library with mindful development practices, you can create web experiences that are welcoming to all users.`,
+  },
 ];

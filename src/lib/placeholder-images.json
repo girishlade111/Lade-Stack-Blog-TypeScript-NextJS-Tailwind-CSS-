@@ -29,6 +29,18 @@
       "description": "Portrait of a person smiling",
       "imageUrl": "https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI0MjMyNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional portrait"
+    },
+    {
+      "id": "blog-post-5",
+      "description": "Flowchart diagram representing state management",
+      "imageUrl": "https://images.unsplash.com/photo-1634644238260-84542858b955?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmbG93Y2hhcnR8ZW58MHx8fHwxNzYzMTI4MTUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "flowchart diagram"
+    },
+    {
+      "id": "blog-post-6",
+      "description": "Diverse group of people collaborating on a project",
+      "imageUrl": "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpbmNsdXNpdml0eXxlbnwwfHx8fDE3NjMxMjgxNzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "inclusivity collaboration"
     }
   ]
 }
