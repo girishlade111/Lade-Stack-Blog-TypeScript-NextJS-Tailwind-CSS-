@@ -11,54 +11,50 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+type Theme = 'light' | 'dark' | 'system';
+
 export function ThemeToggle() {
-  const [theme, setThemeState] = React.useState<'light' | 'dark' | 'system'>(
-    'system'
-  );
+  const [theme, setTheme] = React.useState<Theme>('system');
 
   React.useEffect(() => {
-    const isClient = typeof window !== 'undefined';
-    if (isClient) {
-      const storedTheme = window.localStorage.getItem('theme') as
-        | 'light'
-        | 'dark'
-        | 'system'
-        | null;
-      if (storedTheme) {
-        setThemeState(storedTheme);
-      }
-    }
-  }, []);
-
-  const setTheme = (theme: 'light' | 'dark' | 'system') => {
-    window.localStorage.setItem('theme', theme);
-    setThemeState(theme);
-  };
-
-  React.useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-
-    let effectiveTheme = theme;
-    if (theme === 'system') {
-      effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-    }
-
-    root.classList.add(effectiveTheme);
+    // This code now runs only on the client
+    const storedTheme = localStorage.getItem('theme') as Theme | null;
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+    const initialTheme = storedTheme || 'system';
+    setTheme(initialTheme);
+    
+    applyTheme(initialTheme);
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
-      if (theme === 'system') {
-        const newEffectiveTheme = mediaQuery.matches ? 'dark' : 'light';
-        root.classList.remove('light', 'dark');
-        root.classList.add(newEffectiveTheme);
+      if (localStorage.getItem('theme') === 'system') {
+        applyTheme('system');
       }
     };
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, []);
+
+  const applyTheme = (themeToApply: Theme) => {
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+
+    let effectiveTheme = themeToApply;
+    if (themeToApply === 'system') {
+      effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+    root.classList.add(effectiveTheme);
+  };
+
+  const handleSetTheme = (newTheme: Theme) => {
+    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
 
   return (
     <DropdownMenu>
@@ -70,13 +66,13 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
+        <DropdownMenuItem onClick={() => handleSetTheme('light')}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
+        <DropdownMenuItem onClick={() => handleSetTheme('dark')}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
+        <DropdownMenuItem onClick={() => handleSetTheme('system')}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
